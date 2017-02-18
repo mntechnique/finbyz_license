@@ -72,7 +72,7 @@ app_license = "MIT"
 
 doc_events = {
 	"Sales Invoice": {
-		"validate": "license.api.fl_si_validate",
+		"on_submit": "license.api.fl_si_validate",
 	}
 }
 
