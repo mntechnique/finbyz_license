@@ -118,5 +118,9 @@ fixtures = [{"dt": "Custom Field", "filters":[["name", "in", [
 "Sales Invoice-finbyz_license",
 "Sales Invoice-shipping_bill_no",
 "Sales Invoice-quantity",
-"Sales Invoice-fob_value"]
+"Sales Invoice-fob_value",
+"Purchase Invoice-finbyz_license",
+"Purchase Invoice-shipping_bill_no",
+"Purchase Invoice-quantity",
+"Purchase Invoice-cif_value"]
 ]]}]

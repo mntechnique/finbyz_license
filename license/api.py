@@ -23,14 +23,24 @@ def fl_si_on_cancel(self, method):
 		export_entry.delete()
 		frappe.db.commit()
 
-# def fl_pi_on_submit(self, method):
-# 	export_entry = frappe.new_doc("Import Against AAL", )
-# 	export_entry.parent = self.finbyz_license
-# 	export_entry.save(ignore_permissions = True)
-# 	frappe.db.commit()
+def fl_pi_on_submit(self, method):
+	import_entry = frappe.get_doc("Advance Authorisation License", self.finbyz_license)
+	import_entry.append("imports", {
+		"purchase_invoice" : self.name,
+		"shipping_bill_no" : self.shipping_bill_no,
+		"sb_date" : self.posting_date,
+		"quantity" : self.quantity,    
+		"cif_value" : self.cif_value,  
+	})
 
-# def fl_pi_on_submit(self, method):
-# 	export_entry = frappe.new_doc("Import Against AAL", )
-# 	export_entry.parent = self.finbyz_license
-# 	export_entry.save(ignore_permissions = True)
-# 	frappe.db.commit()
+	import_entry.save(ignore_permissions = True)
+	frappe.db.commit()
+
+def fl_pi_on_cancel(self, method):
+	import_entry = frappe.db.get_value("Import Against AAL", 
+		filters={"parent":self.finbyz_license,
+				"purchase_invoice":self.name}, fieldname="name")
+	if import_entry:
+		import_entry = frappe.get_doc("Import Against AAL", import_entry)
+		import_entry.delete()
+		frappe.db.commit()
