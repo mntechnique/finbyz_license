@@ -72,7 +72,12 @@ app_license = "MIT"
 
 doc_events = {
 	"Sales Invoice": {
-		"on_submit": "license.api.fl_si_validate",
+		"on_submit": "license.api.fl_si_on_submit",
+		"on_cancel": "license.api.fl_si_on_cancel",
+	},
+	"Purchase Invoice": {
+		"on_submit": "license.api.fl_pi_on_submit",
+		"on_cancel": "license.api.fl_pi_on_cancel",
 	}
 }
 
@@ -109,3 +114,9 @@ doc_events = {
 # 	"frappe.desk.doctype.event.event.get_events": "license.event.get_events"
 # }
 
+fixtures = [{"dt": "Custom Field", "filters":[["name", "in", [
+"Sales Invoice-finbyz_license",
+"Sales Invoice-shipping_bill_no",
+"Sales Invoice-quantity",
+"Sales Invoice-fob_value"]
+]]}]
