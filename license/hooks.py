@@ -74,10 +74,12 @@ doc_events = {
 	"Sales Invoice": {
 		"on_submit": "license.api.fl_si_on_submit",
 		"on_cancel": "license.api.fl_si_on_cancel",
+        "validate": "license.api.fl_si_validate",
 	},
 	"Purchase Invoice": {
 		"on_submit": "license.api.fl_pi_on_submit",
 		"on_cancel": "license.api.fl_pi_on_cancel",
+        "validate": "license.api.fl_pi_validate",
 	}
 }
 
@@ -119,8 +121,11 @@ fixtures = [{"dt": "Custom Field", "filters":[["name", "in", [
 "Sales Invoice-shipping_bill_no",
 "Sales Invoice-quantity",
 "Sales Invoice-fob_value",
+"Sales Order-customer",
+"Sales Order-sales_partner",
 "Purchase Invoice-finbyz_license",
 "Purchase Invoice-shipping_bill_no",
 "Purchase Invoice-quantity",
-"Purchase Invoice-cif_value"]
+"Purchase Invoice-cif_value",
+"Purchase Order-supplier"]
 ]]}]
